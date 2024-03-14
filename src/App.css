@@ -18,6 +18,14 @@
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
 
+.container {
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+}
+
 .container_container {
   
   display: flex;
@@ -54,4 +62,14 @@
 
 .read-the-docs {
   color: #888;
+}
+
+
+
+.flavorText {
+  
+  background-color: rgb(76, 75, 75);
+  border-radius: 15px;
+  
+  
 }

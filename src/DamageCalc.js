@@ -1,6 +1,6 @@
 import { RollDice } from "./Utilities/RollDice"
 
-function DamageCalc(weapon, weaponCount, target, targetAbilities, targetCount){
+function DamageCalc(weapon, weaponCount, target, targetAbilities){
   
   let damageStats = {attacks:0, attacksHit:0, wounds:0, attackSaved:0, toughnessCheck:0, feelNoPain: 0}
   
@@ -10,13 +10,21 @@ function DamageCalc(weapon, weaponCount, target, targetAbilities, targetCount){
     AttacksHit(weapon, damageStats)
     Wounds(weapon, target, damageStats)
     AttackSaved(weapon, target, targetAbilities, damageStats)
-    FeelNoPain()
     
+    console.log(damageStats)
     console.log("Remaining Wounds: ", damageStats.wounds - damageStats.attackSaved)
+    return damageStats
   
 }
 
-function Attacks(weapon, weaponCount, damageStats) {
+/* 
+this function calculates the number of attacks the selected unit randomly assigns
+d3 and d6 attacks are randomly rolled here 
+after all rolls weapon count multiplies attacks
+potential bug d3 and d6 attacks arent rolled multiple times for multiple units
+*/
+
+function Attacks(weapon, weaponCount, damageStats) { 
   
   const regex = new RegExp("(\\d?)(D?)(\\d?)\\+?(\\d?)")
   let attacks = 0;
@@ -35,6 +43,11 @@ function Attacks(weapon, weaponCount, damageStats) {
   console.log("Attacks made: ", damageStats.attacks)
   
 }
+
+/*
+if weapon skill is NA, all attacks hit (ie flamethrowers)
+else we roll each attack and see if the roll is greater than or equal to the units weaponskill
+*/
 
 function AttacksHit(weapon, damageStats) {
   
@@ -58,6 +71,11 @@ function AttacksHit(weapon, damageStats) {
   
 }
 
+/*
+to figure out what our offensive unit wounds on we need first hit the toughness check function
+then we roll dice and if they are greater than or equal to the wound on we add a wound
+*/
+
 function Wounds(weapon, target, damageStats) {
   
   console.log("Target: ", target)
@@ -76,6 +94,12 @@ function Wounds(weapon, target, damageStats) {
   console.log("Wounds: ", damageStats.wounds)
 }
 
+/*first check is to see if our defensive unit has a feel no pain
+next if the unit cant save (its save is greater than 6) we add the feel no pain roll to the attacks saved
+if our save is less than the invuln save we set save to invuln
+for each wound we roll saves and if d6 is greater than or equal to the save on it counts as an attack saves
+at the end we calculate feel no pains from any leftover wounds
+*/
 function AttackSaved(weapon, target, targetAbilities, damageStats) {
   
   const invuln = targetAbilities.invulnerablesave.save
@@ -120,6 +144,16 @@ function AttackSaved(weapon, target, targetAbilities, damageStats) {
   
 }
 
+/* 
+this calc checks the offensive units strength against the defensive units toughness
+this formula is just base warhammer rules 
+if strength is 2x the toughness wound on 2+
+if strength is greater than toughness wound on 3+
+if stregnth equals toughness wound on 4+
+if strength is lesss than toughness we wound on 5+
+if strength is less than or equal to half the toughness we wound on 6+
+*/
+
 function ToughnessCheck(strength, toughness) {
   
   console.log("Weapon Strength: ", strength)
@@ -150,6 +184,12 @@ function ToughnessCheck(strength, toughness) {
 
 }
 
+/*
+we check the defensive units feel no pain
+after the check we only apply it if there are leftover wounds
+d6 is rolled and if it is greater than or equal to the defensive feel no pain we save another roll
+*/
+
 function FeelNoPain(wounds, fnp) {
   
   let saves
@@ -169,5 +209,6 @@ function FeelNoPain(wounds, fnp) {
   console.log("Feel No Pain Blocked: ", 0)
   return 0
 }
+
 
 export default DamageCalc
