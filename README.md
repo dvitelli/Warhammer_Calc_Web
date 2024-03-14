@@ -7,7 +7,7 @@ This program uses drop downs to take in a selected unit from Warhammer 40k and t
 ![alt text](/Warhammer_Calc.jpg "Example Image")
 
 ## Program Flow
-Curious user views website and selected their unit to see if they would wound another unit enough to make their attack worth it. This program runs a single simulation, but you could run multiple to get a feel for how many wounds your models apply.
+Curious user views website and selects their model/models to see if they would wound another unit enough to make their attack worth it. This program runs a single simulation, but you could run multiple to get a feel for how many wounds your models apply.
 
 
 ## Future Additions
