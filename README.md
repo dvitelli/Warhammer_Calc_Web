@@ -1,8 +1,16 @@
-# React + Vite
+# Warhammer Calculator Web JS
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Description	
+This program uses drop downs to take in a selected unit from Warhammer 40k and then calculates a roll against another unit.
+## Example
 
-Currently, two official plugins are available:
+![alt text](/Warhammer_Calc.jpg "Example Image")
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Program Flow
+Curious user views website and selected their unit to see if they would wound another unit enough to make their attack worth it. This program runs a single simulation, but you could run multiple to get a feel for how many wounds your models apply.
+
+
+## Future Additions
+
+ 1. Simulate more instances of combat and display an average
+ 2. Add functionality for cover or buffs
