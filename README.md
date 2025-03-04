@@ -1,7 +1,7 @@
 # Warhammer Calculator Web JS
 
 ## Description	
-This program uses drop downs to take in a selected unit from Warhammer 40k and then calculates a roll against another unit.
+This web app uses drop downs to take in a selected unit from Warhammer 40k and then calculates a roll against another unit.
 ## Example
 
 ![alt text](/Warhammer_Calc.jpg "Example Image")
